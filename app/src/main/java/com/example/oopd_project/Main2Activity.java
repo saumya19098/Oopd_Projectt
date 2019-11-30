@@ -26,6 +26,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     final Context context=this;
     Boolean userlogin=false;
     DatabaseReference ref,pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
