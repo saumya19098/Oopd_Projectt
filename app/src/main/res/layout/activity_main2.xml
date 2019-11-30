@@ -63,6 +63,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/User_Register"
         android:layout_gravity="center_vertical|center_horizontal"
         android:text="Register"/>
 
