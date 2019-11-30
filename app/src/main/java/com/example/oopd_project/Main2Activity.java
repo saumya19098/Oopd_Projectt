@@ -75,7 +75,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 if(task.isSuccessful())
                 {
                     finish();
-                    Intent intent=new Intent(Main2Activity.this, check.class);
+                    Intent intent=new Intent(Main2Activity.this, Add_to_cart.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     userlogin=true;
                     Toast.makeText(getApplicationContext(),"data saved",Toast.LENGTH_LONG).show();
