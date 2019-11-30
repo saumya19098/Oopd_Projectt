@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
@@ -25,6 +27,9 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
             ,editphone_userregister;
     static Pattern pat = Pattern.compile("^[0-9a-zA-Z\\s]*.@iiitd.ac.in$");
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

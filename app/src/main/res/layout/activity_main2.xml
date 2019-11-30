@@ -25,6 +25,7 @@
             android:layout_marginLeft="20dp"
             android:textSize="25dp"/>
         <EditText
+            android:id="@+id/userloginemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -46,6 +47,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userloginpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -59,8 +61,9 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:id="@+id/User_Login"
-        android:text="LOGIN" />
+        android:id="@+id/UserLogin"
+        android:text="LOGIN"
+        android:onClick="userlogin()"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
