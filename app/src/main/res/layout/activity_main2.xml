@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_gravity="center_vertical|center_horizontal"
+        android:id="@+id/User_Login"
         android:text="LOGIN" />
     <Button
         android:layout_width="wrap_content"

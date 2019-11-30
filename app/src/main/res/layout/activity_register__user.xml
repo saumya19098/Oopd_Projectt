@@ -28,6 +28,7 @@
             android:layout_marginLeft="20dp"
             android:textSize="25dp"/>
         <EditText
+            android:id="@+id/userregistername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Please enter name"
@@ -51,6 +52,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userregisteremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -73,6 +75,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userregisterpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -95,6 +98,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userregisterconpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -117,6 +121,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userregisterphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -138,11 +143,34 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/userregisteraddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:textSize="25dp" />
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="18dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+
+            android:id="@+id/userregistersubmit"
+            android:layout_gravity="left"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/userregistercancel"
+
+            android:layout_gravity="right"/>
     </LinearLayout>
 
 </LinearLayout>

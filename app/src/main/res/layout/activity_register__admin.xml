@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Register_Admin">
+    tools:context=".Register_User">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADMIN REGISTER"
+        android:text="USER REGISTER"
         android:textSize="40dp"
         android:gravity="center_horizontal"
         />
@@ -28,6 +28,7 @@
             android:layout_marginLeft="20dp"
             android:textSize="25dp"/>
         <EditText
+            android:id="@+id/adminregistername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Please enter name"
@@ -51,6 +52,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/adminregisteremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -73,6 +75,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/adminregisterpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -95,10 +98,11 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/adminregisterconpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:layout_marginLeft="20dp"
+            android:inputType="textPassword"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -117,6 +121,7 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/adminregisterphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -138,12 +143,34 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/adminregisteraddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:textSize="25dp" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="18dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+
+            android:id="@+id/adminregistersubmit"
+            android:layout_gravity="left"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/adminregistercancel"
+
+            android:layout_gravity="right"/>
+    </LinearLayout>
 
 </LinearLayout>
-
