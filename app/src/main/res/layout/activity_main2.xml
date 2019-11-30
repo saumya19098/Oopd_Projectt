@@ -27,7 +27,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please enter email"
             android:layout_marginLeft="50dp"
             android:textSize="25dp"
             />
@@ -50,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Please enter password"
+            android:inputType="textPassword"
             android:textSize="25dp" />
 
     </LinearLayout>
@@ -61,6 +60,11 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center_vertical|center_horizontal"
         android:text="LOGIN" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="Register"/>
 
 
 </LinearLayout>
