@@ -11,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Place_Order"></activity>
+        <activity android:name=".Additemquantity"></activity>
+        <activity android:name=".changeprice" />
+        <activity android:name=".removeitem" />
+        <activity android:name=".Additem" />
+        <activity android:name=".show_inventroy" />
+        <activity android:name=".Payment" />
+        <activity android:name=".SalesReport" />
+        <activity android:name=".Admin_report" />
+        <activity android:name=".Place_Order" />
         <activity android:name=".Add_to_cart" />
         <activity android:name=".check" />
         <activity android:name=".Register_User" />

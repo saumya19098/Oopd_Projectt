@@ -79,7 +79,7 @@ public class AdminLogin extends AppCompatActivity implements View.OnClickListene
                 if(task.isSuccessful())
                 {
                     finish();
-                    Intent intent=new Intent(AdminLogin.this, check.class);
+                    Intent intent=new Intent(AdminLogin.this,Admin_report.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     startActivity(intent);

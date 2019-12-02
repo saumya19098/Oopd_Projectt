@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
@@ -23,7 +24,9 @@ import java.util.regex.Pattern;
 public class Register_Admin extends AppCompatActivity implements View.OnClickListener {
     EditText editname_adminregister, editPassword_adminregister, editConfirmpassword_adminregister, editEmail_adminregister,editaddress_adminregister
             ,editphone_adminregister;
-    static Pattern pat = Pattern.compile("^[0-9a-zA-Z\\s]*.@iiitd.ac.in$");
+    private DatabaseReference mDatabase,mDatabase1;
+    FirebaseDatabase firebaseDatabase;
+
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +38,15 @@ public class Register_Admin extends AppCompatActivity implements View.OnClickLis
         editEmail_adminregister = (EditText) findViewById(R.id.userregisteremail);
         editaddress_adminregister =(EditText) findViewById(R.id.userregisteraddress);
         editphone_adminregister=(EditText) findViewById(R.id.userregisterphone);
-
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        mDatabase1=firebaseDatabase.getReference("Admin");
         mAuth = FirebaseAuth.getInstance();
         findViewById(R.id.adminregistersubmit).setOnClickListener(this);
         findViewById(R.id.adminregistercancel).setOnClickListener(this);
     }
     private void registeruser() {
         final String Username, Email_Register;
-        String Password_Register,Confirmpassword,Phone,Address;
+        final String Password_Register,Confirmpassword,Phone,Address;
 
         Username = editname_adminregister.getText().toString().trim();
         Password_Register = editPassword_adminregister.getText().toString().trim();
@@ -104,11 +108,14 @@ public class Register_Admin extends AppCompatActivity implements View.OnClickLis
 
                     Toast.makeText(getApplicationContext(),"User Regsitered Successfully",Toast.LENGTH_SHORT).show();
                     //Store the data to database
-                    Userdetails user= new Userdetails(Username, Email_Register);
-                    FirebaseDatabase.getInstance().getReference("users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
+                    Userdetails user= new Userdetails(Username, Email_Register,Address,Phone);
+//                   FirebaseDatabase.getInstance().getReference("Admin")
+//                            mDatabase1.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseDatabase.getInstance().getReference("Admin")
+                            .setValue(user)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful())
                             { finish();

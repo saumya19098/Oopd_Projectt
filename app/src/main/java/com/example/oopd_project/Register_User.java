@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     FirebaseUser user;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
         editEmail_userregister = (EditText) findViewById(R.id.userregisteremail);
         editaddress_userregister =(EditText) findViewById(R.id.userregisteraddress);
         editphone_userregister=(EditText) findViewById(R.id.userregisterphone);
+        mDatabase = FirebaseDatabase.getInstance().getReference("User");
+        //DatabaseReference data1 = mDatabase.child("");
 
         mAuth = FirebaseAuth.getInstance();
         findViewById(R.id.userregistersubmit).setOnClickListener(this);
@@ -47,7 +51,7 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
     }
     private void registeruser() {
         final String Username, Email_Register;
-        String Password_Register,Confirmpassword,Phone,Address;
+        final String Password_Register,Confirmpassword,Phone,Address;
 
         Username = editname_userregister.getText().toString().trim();
         Password_Register = editPassword_userregister.getText().toString().trim();
@@ -110,7 +114,7 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(getApplicationContext(),"User Regsitered Successfully",Toast.LENGTH_SHORT).show();
                     //Store the data to database
                     Userdetails user= new Userdetails(Username, Email_Register);
-                    FirebaseDatabase.getInstance().getReference("users")
+                    FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -118,6 +122,8 @@ public class Register_User extends AppCompatActivity implements View.OnClickList
                             if(task.isSuccessful())
                             { finish();
                                 Toast.makeText(Register_User.this,"Data saved",Toast.LENGTH_LONG).show();
+                                Profile_user profile = new Profile_user(Username,Phone,Address,Email_Register);
+                                Log.d("profile", "profile details");
                             }
                             else
                             {

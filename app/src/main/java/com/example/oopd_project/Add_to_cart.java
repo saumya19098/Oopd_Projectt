@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,67 +48,86 @@ public class Add_to_cart extends AppCompatActivity {
 
      ArrayList<String> data = new ArrayList<>();
     ArrayList<String> data1 = new ArrayList<>();
+    String[] cart=new String[data.size()];
     //private ArrayList<Integer> data2 = new ArrayList<Integer>();
 
-    @Override
+     int i=0;
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_to_cart);
-        final ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,data);
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add_to_cart);
+       final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+     // Log.d("SAUMYA",);
 
-        ListView lv = (ListView) findViewById(R.id.listview);
-        lv.setAdapter(adapter);
-        java_card_button=(Button)findViewById(R.id.Show_cart_Button);
-        firebaseDatabase= FirebaseDatabase.getInstance();
+       final ListView lv = (ListView) findViewById(R.id.listview);
+       lv.setAdapter(adapter);
+       java_card_button = (Button) findViewById(R.id.Show_cart_Button);
+       firebaseDatabase = FirebaseDatabase.getInstance();
 
-        mDatabase1=firebaseDatabase.getReference("Inventory");
-        mDatabase1.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value1=dataSnapshot.getKey();
-                String value2=""+dataSnapshot.getValue();
-                String val=value1+"  RS "+value2;
-                Log.d("SAUMYA:"," "+value2);
+       mDatabase1 = firebaseDatabase.getReference("Inventory");
+       mDatabase = firebaseDatabase.getReference("Placeorder");
+       //cart= data.toArray(cart);
+       mDatabase1.addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+               String value1 = dataSnapshot.getKey();
+               String value2 = "" + dataSnapshot.getValue();
+               String val = value1 + "  RS " + value2;
+               //cart[i]=value1;
+               // Log.d("SAUMYA:"," "+cart[i]);
+               //i++;
 
-                
-                data.add(val);
-                adapter.notifyDataSetChanged();
+
+               data.add(val);
+               adapter.notifyDataSetChanged();
 
 
-            }
+           }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                adapter.notifyDataSetChanged();
+           @Override
+           public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+               adapter.notifyDataSetChanged();
 
-            }
+           }
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+           @Override
+           public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-            }
+           }
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+           @Override
+           public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            }
+           }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-        generateListContent();
-        lv.setAdapter(new MyListAdaper(this, R.layout.list_item, data));
+           }
+       });
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Add_to_cart.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
-
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+          //     Log.d("Saumya",(Item)adapterView.getAdapter().getItem(i));
+//                Intent intent=new Intent(getApplicationContext(),check.class);
+//
+//                startActivity(intent);
 
             }
         });
+        //generateListContent();
+//        lv.setAdapter(new MyListAdaper(this, R.layout.list_item, data));
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(Add_to_cart.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
+//
+//
+//
+//            }
+//        });
         java_card_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,16 +137,16 @@ public class Add_to_cart extends AppCompatActivity {
             }
         });
     }
-
-    private void generateListContent() {
-        for(int i = 0; i < 10; i++) {
-            data.add(items[i]);
+//
+//    private void generateListContent() {
+//        for(int i = 0; i < 10; i++) {
+//            data.add(items[i]);
 
             //data.add(price[i]);
             //prices_text.append(price.get(i).toString());
 
-        }
-    }
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

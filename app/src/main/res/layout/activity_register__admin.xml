@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Register_User">
+    tools:context=".Register_Admin">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="USER REGISTER"
+        android:text="ADMIN REGISTER"
         android:textSize="40dp"
         android:gravity="center_horizontal"
         />

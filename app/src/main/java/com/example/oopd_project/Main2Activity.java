@@ -42,6 +42,13 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 userlogin();
             }
         });
+        User_Register_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Main2Activity.this, Register_User.class);
+                startActivity(intent);
+            }
+        });
 
     }
     private void userlogin()
